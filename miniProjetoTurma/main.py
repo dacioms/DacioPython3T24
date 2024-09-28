@@ -46,49 +46,14 @@
                     # [{matricula: int , nome: str, turma: str, portugues: [#, #, #]; matematica: [#, #, #]; ciencias: [#, #, #]}, ]
         # 
         
+
+
+from view import *
+from calculos import *
+
+
 lista_alunos = []
-def cadastrar_aluno():
-    '''Função que cadastra um aluno'''
-    
-    dict_aluno = {}
-    if lista_alunos == []:
-        dict_aluno["matricula"] = 1
-    else:
-        dict_aluno["matricula"] = lista_alunos[-1]["matricula"] + 1
-        
-    dict_aluno["nome"] = input("Digite o nome do aluno: ")
-    dict_aluno["turma"] = input("Digite a turma do aluno: ")
-    
-    dict_aluno["portugues"] = [float(input("Digite a nota do trabalho de português: ")), 
-                               float(input("Digite a nota do teste de português: ")), 
-                               float(input("Digite a nota da prova de português: "))]
-    
-    dict_aluno["matematica"] = [float(input("Digite a nota do trabalho de matemática: ")), 
-                                float(input("Digite a nota do teste de matemática: ")), 
-                                float(input("Digite a nota da prova de matemática: "))]
-    
-    dict_aluno["ciencias"] = [float(input("Digite a nota do trabalho de ciências: ")), 
-                              float(input("Digite a nota do teste de ciências: ")), 
-                              float(input("Digite a nota da prova de ciências: "))]
-    
-    lista_alunos.append(dict_aluno)
-    print("Aluno cadastrado com sucesso!")
-    # print(lista_alunos)
 
-def calcular_medias(port : list, mat : list, cien : list) -> list:
-    '''Função que calcula a média das notas de um aluno
-    
-    Args:
-        port (list): lista de notas do aluno em português
-        mat (list): lista de notas do aluno em matemática
-        cien (list): lista de notas do aluno em ciências
-
-    return: lista de notas do aluno em português, matemática e ciências
-    '''
-    media_port = sum(port) / len(port)
-    media_mat = sum(mat) / len(mat)
-    media_cien = sum(cien) / len(cien)
-    return [media_port, media_mat, media_cien]
 
 def solicitar_medias():
     for aluno in lista_alunos:
@@ -116,30 +81,7 @@ def classificar_alunos():
     print('Classificação de alunos concluída!')
 
 
-def menu():
-    print("Bem vindo ao sistema de cadastro de alunos")
-    print("Escolha uma opção")
-    print("1 - Cadastrar aluno")
-    print("2 - Calcular médias")
-    print("3 - Classificar alunos")
-    print("4 - Exibir")
-    print("5 - Sair")
-    opcao = input("Digite o número da opção desejada: ")
-    if opcao == "1":
-        cadastrar_aluno()
-        return True
-    elif opcao == "2":
-        solicitar_medias()
-        return True
-    elif opcao == "3":
-        classificar_alunos()
-        return True
-    elif opcao == "4":
-        print("Até logo!")
-        return False
-    else:
-        print("Opção inválida")
-        menu()
+
 def main():
     while True:
         continua = menu()
